@@ -1,1 +1,1 @@
-# jun_roboter
+# udemy pythonコースの演習で作成

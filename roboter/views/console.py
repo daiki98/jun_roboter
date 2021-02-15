@@ -35,7 +35,7 @@ def find_template(temp_file):
     Raises:
         NoTemplateError: If the file does not exists.
     """
-    get_template_dir_path = get_template_dir_path()
+    template_dir_path = get_template_dir_path()
     temp_file_path = os.path.join(template_dir_path, temp_file)
     if not os.path.exists(temp_file_path):
         raise NoTemplateError('Could not find{}'.format(temp_file))
@@ -56,7 +56,7 @@ def get_template(template_file_path, color=None):
     with open(template, 'r', encoding='utf-8') as template_file:
         contents = template_file.read()
         contents = contents.rstrip(os.linesep)
-        contents = '{splitter}{sep}{contents}{sep}{splitter}{fsep}'.format(
-            contents=contents, cplitter="="  * 60, sep=os.linesep)
-        contents = termcolor.colired(contents, colot)
+        contents = '{splitter}{sep}{contents}{sep}{splitter}{sep}'.format(
+            contents=contents, splitter="="  * 60, sep=os.linesep)
+        contents = termcolor.colored(contents, color)
         return string.Template(contents)
